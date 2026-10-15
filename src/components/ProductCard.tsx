@@ -24,20 +24,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div
       onClick={() => openQuickView(product)}
-      className="group relative flex flex-col bg-[#0F0F13] border border-white/10 hover:border-[#DFBA73]/50 transition-all duration-500 rounded-sm overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:shadow-[#DFBA73]/5"
+      className="group relative flex flex-col bg-[#0F0F13] border border-white/10 hover:border-[#DFBA73]/50 transition-all duration-300 rounded-sm overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:shadow-[#DFBA73]/5 w-full"
     >
       {/* Top Bar: Category & Concentration */}
-      <div className="p-4 sm:p-5 flex items-center justify-between border-b border-white/5 bg-[#121217]">
-        <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-[#DFBA73] font-medium">
+      <div className="p-3.5 sm:p-4 lg:p-5 flex items-center justify-between border-b border-white/5 bg-[#121217] gap-2">
+        <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] sm:tracking-[0.22em] text-[#DFBA73] font-medium truncate">
           {product.category}
         </span>
-        <span className="text-[10px] uppercase tracking-[0.15em] text-[#8C8A84] font-mono">
+        <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.12em] sm:tracking-[0.15em] text-[#8C8A84] font-mono shrink-0">
           50 ML · EXTRAIT
         </span>
       </div>
 
       {/* Image Container with Luxury Dark Frame */}
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-gradient-to-b from-[#131318] via-[#0E0E12] to-[#0A0A0C] p-4 flex items-center justify-center">
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-gradient-to-b from-[#131318] via-[#0E0E12] to-[#0A0A0C] p-3 sm:p-4 flex items-center justify-center">
         {/* Subtle Ambient Radial Glow */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(223,186,115,0.06)_0%,transparent_70%)] pointer-events-none" />
 
@@ -50,13 +50,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         />
 
         {/* Hover Quick-Action Overlay (desktop) */}
-        <div className="absolute inset-0 bg-[#08080A]/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 p-4">
+        <div className="absolute inset-0 bg-[#08080A]/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:flex items-center justify-center gap-3 p-4">
           <button
             onClick={(e) => {
               e.stopPropagation();
               openQuickView(product);
             }}
-            className="p-3 bg-[#18181D] border border-white/20 hover:border-[#DFBA73] text-[#F4F0E6] hover:text-[#DFBA73] rounded-full transition-all shadow-xl"
+            className="p-3 bg-[#18181D] border border-white/20 hover:border-[#DFBA73] text-[#F4F0E6] hover:text-[#DFBA73] rounded-full transition-all shadow-xl touch-target flex items-center justify-center"
             title="View Olfactory Profile"
             aria-label={`View details for ${product.name}`}
           >
@@ -64,7 +64,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </button>
           <button
             onClick={handleAddToCart}
-            className="p-3 bg-[#DFBA73] hover:bg-[#F3D79B] text-[#08080a] font-bold rounded-full transition-all shadow-xl"
+            className="p-3 bg-[#DFBA73] hover:bg-[#F3D79B] text-[#08080a] font-bold rounded-full transition-all shadow-xl touch-target flex items-center justify-center"
             title="Add to Shopping Bag"
             aria-label={`Add ${product.name} to bag`}
           >
@@ -73,25 +73,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
 
         {/* Longevity Badge */}
-        <div className="absolute bottom-3 left-3 bg-[#0A0A0C]/80 backdrop-blur-sm border border-white/10 px-2.5 py-1 text-[9px] uppercase tracking-wider text-[#C8C5BD]">
+        <div className="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 bg-[#0A0A0C]/85 backdrop-blur-sm border border-white/10 px-2 sm:px-2.5 py-0.5 sm:py-1 text-[8px] sm:text-[9px] uppercase tracking-wider text-[#C8C5BD]">
           {product.metrics.longevity}
         </div>
       </div>
 
       {/* Card Content & Details */}
-      <div className="p-5 flex flex-col flex-grow justify-between space-y-4 bg-[#0F0F13]">
+      <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between space-y-3.5 sm:space-y-4 bg-[#0F0F13]">
         <div>
           <div className="flex items-start justify-between gap-2">
-            <h3 className="font-serif text-lg sm:text-xl font-normal text-[#F4F0E6] group-hover:text-[#DFBA73] transition-colors leading-snug">
+            <h3 className="font-serif text-base sm:text-lg lg:text-xl font-normal text-[#F4F0E6] group-hover:text-[#DFBA73] transition-colors leading-snug break-words flex-1 min-w-0">
               {product.name}
             </h3>
             <div className="text-right shrink-0">
-              <span className="font-serif text-lg text-[#DFBA73] font-medium">
+              <span className="font-serif text-base sm:text-lg text-[#DFBA73] font-medium block">
                 {product.formattedPrice}
               </span>
-              <div className="text-[9px] uppercase tracking-wider text-[#8A8882]">
+              <span className="text-[8px] sm:text-[9px] uppercase tracking-wider text-[#8A8882] block leading-none">
                 Demo Price
-              </div>
+              </span>
             </div>
           </div>
 
@@ -100,11 +100,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </p>
 
           {/* Key Notes Pills */}
-          <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-white/5">
+          <div className="flex flex-wrap gap-1 sm:gap-1.5 mt-2.5 sm:mt-3 pt-2.5 sm:pt-3 border-t border-white/5">
             {product.notes.top.slice(0, 2).concat(product.notes.base.slice(0, 1)).map((note) => (
               <span
                 key={note}
-                className="text-[10px] px-2 py-0.5 bg-white/5 border border-white/5 text-[#BDB9AF]"
+                className="text-[9px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 bg-white/5 border border-white/5 text-[#BDB9AF]"
               >
                 {note}
               </span>
@@ -112,20 +112,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
         </div>
 
-        {/* Mobile / Always-visible Action Buttons */}
+        {/* Always-visible Action Buttons with 44px touch targets */}
         <div className="grid grid-cols-2 gap-2 pt-2 border-t border-white/5">
           <button
             onClick={(e) => {
               e.stopPropagation();
               openQuickView(product);
             }}
-            className="py-2.5 px-3 text-[10px] uppercase tracking-[0.15em] border border-white/15 bg-transparent hover:bg-white/5 text-[#E8E5DD] transition-all text-center font-medium"
+            className="py-2.5 px-2 sm:px-3 text-[10px] sm:text-[11px] uppercase tracking-[0.12em] sm:tracking-[0.15em] border border-white/15 bg-transparent hover:bg-white/5 text-[#E8E5DD] transition-all text-center font-medium touch-target flex items-center justify-center"
           >
             Inspect Notes
           </button>
           <button
             onClick={handleAddToCart}
-            className={`py-2.5 px-3 text-[10px] uppercase tracking-[0.15em] transition-all text-center font-semibold flex items-center justify-center space-x-1 ${
+            className={`py-2.5 px-2 sm:px-3 text-[10px] sm:text-[11px] uppercase tracking-[0.12em] sm:tracking-[0.15em] transition-all text-center font-semibold touch-target flex items-center justify-center space-x-1 ${
               isAdded
                 ? "bg-[#2E7D32] text-white"
                 : "bg-[#DFBA73] hover:bg-[#F3D79B] text-[#08080a]"
@@ -133,12 +133,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           >
             {isAdded ? (
               <>
-                <Check className="w-3.5 h-3.5 mr-1" />
+                <Check className="w-3.5 h-3.5 mr-1 shrink-0" />
                 <span>Added</span>
               </>
             ) : (
               <>
-                <Plus className="w-3.5 h-3.5 mr-1" />
+                <Plus className="w-3.5 h-3.5 mr-1 shrink-0" />
                 <span>Add to Bag</span>
               </>
             )}
